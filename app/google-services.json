@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "956274868853",
+    "project_id": "loodos-36282",
+    "storage_bucket": "loodos-36282.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956274868853:android:d740548402e05fd53b6e3c",
+        "android_client_info": {
+          "package_name": "com.example.loodoscryptoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFhv7D9H08EAELGYrSoBufg6AXcqLZjVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
