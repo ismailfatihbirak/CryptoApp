@@ -1,32 +1,22 @@
-package com.example.loodoscryptoapp.domain.use_case.get_crypto
+package com.example.loodoscryptoapp.domain.use_case.get_fav
 
 import android.util.Log
+import com.example.loodoscryptoapp.data.repository.CryptoFavRepo
 import com.example.loodoscryptoapp.domain.model.Root
-import com.example.loodoscryptoapp.domain.repository.CryptoRepo
 import com.example.loodoscryptoapp.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.lang.Exception
 import javax.inject.Inject
 
-
-class GetCryptoUseCase @Inject constructor(private val repository : CryptoRepo) {
-    fun executeGetCrypto() : Flow<Resource<List<Root>>> = flow{
+class GetFavUseCase @Inject constructor(private val repository : CryptoFavRepo) {
+    fun executeGetFav(authId: String) : Flow<Resource<List<Root>>> = flow{
         try {
             emit(Resource.Loading())
-            val cryptoList = repository.getCrypto()
+            val cryptoList = repository.getFavList(authId)
             emit(Resource.Success(cryptoList))
         }catch (e : Exception){
             emit(Resource.Error(e.message.toString()))
         }
     }
 }
-
-
-
-
-
-
-
-
-

@@ -13,6 +13,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.loodoscryptoapp.presentation.detail.DetailScreen
+import com.example.loodoscryptoapp.presentation.favorite.FavoriteScreen
 import com.example.loodoscryptoapp.presentation.home.HomeScreen
 import com.example.loodoscryptoapp.presentation.sign_in.SignInScreen
 import com.example.loodoscryptoapp.presentation.sign_up.SignUpScreen
@@ -52,7 +54,23 @@ fun ScreenTransations() {
             SignInScreen(navController = navController)
         }
         composable("home") { backStackEntry ->
-            HomeScreen()
+            HomeScreen(navController = navController)
+        }
+        composable("fav") { backStackEntry ->
+            FavoriteScreen(navController)
+        }
+        composable("detail/{asset_id}/{id_icon}/{name}/{price_usd}",
+            arguments= listOf(
+                navArgument("asset_id") {type = NavType.StringType},
+                navArgument("id_icon") {type = NavType.StringType},
+                navArgument("name") {type = NavType.StringType},
+                navArgument("price_usd") {type = NavType.StringType},
+            )) { backStackEntry ->
+            val asset_id = backStackEntry.arguments!!.getString("asset_id")
+            val id_icon = backStackEntry.arguments!!.getString("id_icon")
+            val name = backStackEntry.arguments!!.getString("name")
+            val price_usd = backStackEntry.arguments!!.getString("price_usd")
+            DetailScreen(asset_id!!, id_icon!!, name!!, price_usd!!)
         }
 
     }

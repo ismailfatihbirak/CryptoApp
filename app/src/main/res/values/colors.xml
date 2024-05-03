@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="welcome_color">#3bafbf</color>
+    <color name="icon_gray">#BEBEBE</color>
 </resources>

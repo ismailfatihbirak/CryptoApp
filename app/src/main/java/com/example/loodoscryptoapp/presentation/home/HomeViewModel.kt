@@ -20,6 +20,8 @@ class HomeViewModel@Inject constructor(
     private val _state = mutableStateOf<HomeState>(HomeState())
     val state: State<HomeState> = _state
 
+
+
     private fun getCrypto() {
         getCryptoUseCase.executeGetCrypto().onEach {
             when (it) {

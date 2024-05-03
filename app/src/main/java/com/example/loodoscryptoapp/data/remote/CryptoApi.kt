@@ -1,15 +1,14 @@
 package com.example.loodoscryptoapp.data.remote
 
-import com.example.loodoscryptoapp.domain.model.Main
+import com.example.loodoscryptoapp.domain.model.Root
+import com.example.loodoscryptoapp.util.Constant.API_KEY
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface CryptoApi {
-    //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
-
-    @GET("coins/markets?vs_currency=usd")
+    @GET("assets")
     suspend fun getCrypto(
-    ): List<Main>
-
+        @Query("apikey") apiKey :String = API_KEY
+    ):List<Root>
 
 }
