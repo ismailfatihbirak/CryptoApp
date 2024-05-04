@@ -14,6 +14,9 @@ Notifications: Receive alerts for price changes.
 - Coroutines flow
 - Firebase authentication and firestore
 - Retrofit Coil
+## API Reference 
+
+The app uses the [CoinAPI.io](https://www.coinapi.io/) 
 
 ## Screenshoots
 | Welcome | Sign Up | Sign In |
