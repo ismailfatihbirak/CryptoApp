@@ -1,5 +1,6 @@
 package com.example.loodoscryptoapp.presentation.home
 
+import android.Manifest
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -25,18 +27,38 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import com.example.loodoscryptoapp.data.work_manager.CryptoPriceCheckWorker
+import com.example.loodoscryptoapp.data.work_manager.NotificationHandler
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.rememberPermissionState
+import java.util.concurrent.TimeUnit
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class)
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(),navController:NavController) {
+    val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
+    LaunchedEffect(key1 = true) {
+        if (!postNotificationPermission.status.isGranted) {
+            postNotificationPermission.launchPermissionRequest()
+        }
+    }
     LaunchedEffect(true){
         viewModel.loadGetCrypto()
     }
 
+    val request = PeriodicWorkRequestBuilder<CryptoPriceCheckWorker>(15, TimeUnit.MINUTES)
+        .setInitialDelay(15, TimeUnit.MINUTES)
+        .build()
+
+    WorkManager.getInstance(LocalContext.current).enqueue(request)
 
     var text by remember { mutableStateOf("") }
     val state = viewModel.state
@@ -86,7 +108,6 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(),navController:NavContr
                     if (newText.isNotBlank()){
                         text = newText
                     }
-
                 })
 
             if (state.value.isLoading) {

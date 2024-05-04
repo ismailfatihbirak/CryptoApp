@@ -1,11 +1,16 @@
 package com.example.loodoscryptoapp.data.di
 
 import android.content.Context
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.hilt.work.WorkerAssistedFactory
 import com.example.loodoscryptoapp.data.remote.CryptoApi
 import com.example.loodoscryptoapp.data.repository.CryptoAuthRepo
 import com.example.loodoscryptoapp.data.repository.CryptoFavRepo
 import com.example.loodoscryptoapp.data.repository.CryptoRepoImpl
+import com.example.loodoscryptoapp.data.work_manager.CryptoPriceCheckWorker
 import com.example.loodoscryptoapp.domain.repository.CryptoRepo
+import com.example.loodoscryptoapp.domain.use_case.get_assetid_crypto.GetAssetIdCryptoUseCase
+import com.example.loodoscryptoapp.domain.use_case.get_fav.GetFavUseCase
 import com.example.loodoscryptoapp.util.Constant.BASE_URL
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.firestore

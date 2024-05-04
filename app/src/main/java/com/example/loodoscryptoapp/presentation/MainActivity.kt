@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ScreenTransations() {
     val navController = rememberNavController()
-    NavHost(navController, startDestination = "home") {
+    NavHost(navController, startDestination = "welcome") {
         composable("welcome") { backStackEntry ->
             WelcomeScreen(navController)
         }

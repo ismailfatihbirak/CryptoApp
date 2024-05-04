@@ -1,9 +1,10 @@
-package com.example.loodoscryptoapp.presentation.home
+package com.example.loodoscryptoapp.data.work_manager
 
 import com.example.loodoscryptoapp.domain.model.Root
 
-data class HomeState(
+data class FavState(
     val isLoading : Boolean = false,
     val cryptos : List<Root> = listOf(),
     val error : String = "",
+    val delete : Boolean = false
 )

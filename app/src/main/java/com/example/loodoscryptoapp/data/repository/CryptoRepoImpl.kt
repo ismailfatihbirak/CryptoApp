@@ -10,4 +10,10 @@ class CryptoRepoImpl @Inject constructor(private val api : CryptoApi)  : CryptoR
         return api.getCrypto()
     }
 
+    override suspend fun getAssetIdCrypto(assetId: String): List<Root> {
+        return api.getAssetIdCrypto(assetId)
+    }
+
+
+
 }

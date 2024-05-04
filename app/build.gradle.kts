@@ -73,7 +73,9 @@ dependencies {
     //Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.50")
     kapt("com.google.dagger:hilt-android-compiler:2.50")
+    kapt("androidx.hilt:hilt-compiler:1.2.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation ("androidx.hilt:hilt-work:1.2.0")
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.google.code.gson:gson:2.10.1")
@@ -85,9 +87,16 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.android.gms:play-services-auth:21.1.0")
     implementation("com.google.firebase:firebase-firestore")
+    //Work Manager
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    //Notifactions
+    implementation("com.google.accompanist:accompanist-permissions:0.31.1-alpha")
 
-    //datastore
-    implementation ("androidx.datastore:datastore-preferences:1.1.1")
+
+
+
+
+
 
 
 }

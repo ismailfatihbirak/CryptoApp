@@ -1,5 +1,6 @@
 package com.example.loodoscryptoapp.presentation.welcome
 
+import android.Manifest
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -31,11 +32,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.loodoscryptoapp.R
 import com.example.loodoscryptoapp.presentation.home.HomeViewModel
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.rememberPermissionState
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
 @Composable
-fun WelcomeScreen(navController: NavController,viewModel: HomeViewModel= hiltViewModel()) {
+fun WelcomeScreen(navController: NavController) {
+
     Column(
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally,

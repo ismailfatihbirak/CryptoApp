@@ -34,8 +34,6 @@ class FavoriteViewModel@Inject constructor(
                     _state.value = FavoriteState(isLoading = true)
                 }
                 is Resource.Error -> {
-                    val errorMessage = "${it.javaClass.simpleName}: ${it.message}"
-                    Log.e("axax2", errorMessage)
                     _state.value = FavoriteState(error = it.message ?: "Error")
                 }
             }
@@ -53,8 +51,6 @@ class FavoriteViewModel@Inject constructor(
                     _state.value = FavoriteState(isLoading = true)
                 }
                 is Resource.Error -> {
-                    val errorMessage = "${it.javaClass.simpleName}: ${it.message}"
-                    Log.e("axax2", errorMessage)
                     _state.value = FavoriteState(error = it.message ?: "Error")
                 }
             }
