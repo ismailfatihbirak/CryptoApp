@@ -1,12 +1,10 @@
 package com.example.loodoscryptoapp.domain.use_case.get_crypto
 
-import android.util.Log
 import com.example.loodoscryptoapp.domain.model.Root
 import com.example.loodoscryptoapp.domain.repository.CryptoRepo
 import com.example.loodoscryptoapp.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.lang.Exception
 import javax.inject.Inject
 
 

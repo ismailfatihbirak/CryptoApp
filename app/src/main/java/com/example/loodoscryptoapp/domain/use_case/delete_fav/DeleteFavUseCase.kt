@@ -1,11 +1,9 @@
 package com.example.loodoscryptoapp.domain.use_case.delete_fav
 
-import android.util.Log
 import com.example.loodoscryptoapp.data.repository.CryptoFavRepo
 import com.example.loodoscryptoapp.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.lang.Exception
 import javax.inject.Inject
 
 class DeleteFavUseCase @Inject constructor(private val repository : CryptoFavRepo) {
