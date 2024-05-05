@@ -3,11 +3,9 @@ package com.example.loodoscryptoapp.presentation.favorite
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -20,8 +18,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.loodoscryptoapp.presentation.home.BottomNav
-import com.example.loodoscryptoapp.presentation.home.CryptoItem
+import com.example.loodoscryptoapp.presentation.components.FavoriteCryptoItem
+import com.example.loodoscryptoapp.presentation.components.BottomNav
 import com.example.loodoscryptoapp.presentation.home.Screen
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth

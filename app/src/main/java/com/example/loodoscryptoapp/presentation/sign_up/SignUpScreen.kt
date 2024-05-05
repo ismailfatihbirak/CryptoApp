@@ -13,13 +13,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,11 +38,10 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.loodoscryptoapp.R
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
+import com.example.loodoscryptoapp.presentation.components.EmailTextField
+import com.example.loodoscryptoapp.presentation.components.Logo
+import com.example.loodoscryptoapp.presentation.components.PasswordTextField
+import com.example.loodoscryptoapp.presentation.components.SignButton
 
 @Composable
 fun SignUpScreen(viewModel:SignUpViewModel= hiltViewModel(),navController:NavController) {
@@ -105,86 +102,9 @@ fun SignUpScreen(viewModel:SignUpViewModel= hiltViewModel(),navController:NavCon
 
 }
 
-@Composable
-fun PasswordTextField(
-    password: String,
-    onPasswordChange: (String) -> Unit,
-    showPassword: Boolean,
-    onToggleShowPassword: () -> Unit
-) {
-    OutlinedTextField(
-        modifier = Modifier.fillMaxWidth(),
-        value = password,
-        onValueChange = onPasswordChange,
-        label = {
-            Text(text = "Password",
-                fontSize = 10.sp)
-        },
-        visualTransformation = if (showPassword) {
 
-            VisualTransformation.None
 
-        } else {
 
-            PasswordVisualTransformation()
 
-        },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-        trailingIcon = {
-            IconButton(
-                onClick = onToggleShowPassword
-            ) {
-                Icon(
-                    painter = painterResource(id = if (showPassword) R.drawable.baseline_visibility_24 else R.drawable.baseline_visibility_off_24),
-                    contentDescription = "hide_password"
-                )
-            }
-        }
-    )
-}
 
-@Composable
-fun EmailTextField(
-    tf: String,
-    onTfChange: (String) -> Unit
-) {
-    OutlinedTextField(
-        value = tf,
-        onValueChange = onTfChange,
-        modifier = Modifier.fillMaxWidth(),
-        label = {
-            Text(
-                text = "Email",
-                fontSize = 10.sp
-            )
-        }
-    )
-}
 
-@Composable
-fun SignButton(onClick: () -> Unit,text : String) {
-    Button(
-        onClick = onClick,colors = ButtonDefaults.buttonColors(
-            containerColor = colorResource(id = R.color.welcome_color),
-            contentColor = Color.White
-        ), modifier = Modifier.fillMaxWidth(),) {
-
-        Text(text = text, fontSize = 12.sp)
-    }
-}
-
-@Composable
-fun Logo() {
-    Column {
-        Image(
-            painter = painterResource(id = R.drawable.loodos_icon),
-            contentDescription = "" ,
-            modifier = Modifier.size(150.dp,100.dp))
-        Text(text = "Crypto", fontSize = 40.sp,
-            fontFamily = FontFamily.Monospace,
-            fontWeight = FontWeight.Bold,
-            color = colorResource(
-                id = R.color.welcome_color,
-            ))
-    }
-}

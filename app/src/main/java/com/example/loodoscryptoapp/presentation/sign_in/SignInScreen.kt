@@ -28,13 +28,10 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.loodoscryptoapp.R
-import com.example.loodoscryptoapp.presentation.sign_up.EmailTextField
-import com.example.loodoscryptoapp.presentation.sign_up.Logo
-import com.example.loodoscryptoapp.presentation.sign_up.PasswordTextField
-import com.example.loodoscryptoapp.presentation.sign_up.SignButton
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
+import com.example.loodoscryptoapp.presentation.components.EmailTextField
+import com.example.loodoscryptoapp.presentation.components.Logo
+import com.example.loodoscryptoapp.presentation.components.PasswordTextField
+import com.example.loodoscryptoapp.presentation.components.SignButton
 
 @Composable
 fun SignInScreen(viewModel: SignInViewModel = hiltViewModel(),navController: NavController) {

@@ -10,7 +10,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -34,7 +33,8 @@ import androidx.navigation.NavController
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.loodoscryptoapp.data.work_manager.CryptoPriceCheckWorker
-import com.example.loodoscryptoapp.data.work_manager.NotificationHandler
+import com.example.loodoscryptoapp.presentation.components.BottomNav
+import com.example.loodoscryptoapp.presentation.components.CryptoItem
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
@@ -75,13 +75,13 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(),navController:NavContr
         bottomBar = {
             BottomAppBar (containerColor = Color.White){
                 BottomNav(onHomeClick = {
-                    currentScreen = com.example.loodoscryptoapp.presentation.home.Screen.HOME
+                    currentScreen = Screen.HOME
                     navController.navigate("home"){
                     popUpTo("home") {inclusive=true}
                 } },
                     onFavoriteClick = {
                         currentScreen =
-                            com.example.loodoscryptoapp.presentation.home.Screen.FAVORITE
+                            Screen.FAVORITE
                         navController.navigate("fav"){
                         popUpTo("fav") {inclusive=true}
                     }},
