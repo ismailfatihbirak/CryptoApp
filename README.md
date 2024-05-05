@@ -30,10 +30,12 @@ The app uses the [CoinAPI.io](https://www.coinapi.io/)
 |<img src= "https://i.imgur.com/PjM4cXN.gif" width="250" height="500"/>|<img src= "https://i.imgur.com/5OQpAfJ.gif" width="250" height="500"/>|<img src="https://i.imgur.com/4kTmRh8.png" width="250" height="500"/>|
 
 </br>
-| Search| 
-| ------| 
-|<img src= "https://i.imgur.com/RfUUvV7.gif" width="250" height="500"/>|
-</br>
+
+| Search | notifaction |  
+| ------ | ---------- |  
+|<img src= "https://i.imgur.com/RfUUvV7.gif" width="250" height="500"/>|<img src= "https://i.imgur.com/eeazSN5.jpeg" width="250" height="500"/>|
+
+
 
 
 
