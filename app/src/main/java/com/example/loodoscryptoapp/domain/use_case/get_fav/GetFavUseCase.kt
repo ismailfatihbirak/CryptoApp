@@ -1,6 +1,5 @@
 package com.example.loodoscryptoapp.domain.use_case.get_fav
 
-import android.util.Log
 import com.example.loodoscryptoapp.data.repository.CryptoFavRepo
 import com.example.loodoscryptoapp.domain.model.Root
 import com.example.loodoscryptoapp.util.Resource
