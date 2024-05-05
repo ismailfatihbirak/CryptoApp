@@ -44,6 +44,7 @@ import java.util.concurrent.TimeUnit
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalPermissionsApi::class)
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(),navController:NavController) {
+    val context = LocalContext.current
     val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
     LaunchedEffect(key1 = true) {
         if (!postNotificationPermission.status.isGranted) {
@@ -58,7 +59,11 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(),navController:NavContr
         .setInitialDelay(15, TimeUnit.MINUTES)
         .build()
 
-    WorkManager.getInstance(LocalContext.current).enqueue(request)
+    LaunchedEffect (true){
+        WorkManager.getInstance(context).enqueue(request)
+    }
+
+
 
     var text by remember { mutableStateOf("") }
     val state = viewModel.state
