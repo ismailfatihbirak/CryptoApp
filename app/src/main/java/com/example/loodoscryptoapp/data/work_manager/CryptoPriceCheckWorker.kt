@@ -51,51 +51,62 @@ class CryptoPriceCheckWorker @AssistedInject constructor(
     val getAssetIdCryptoUseCase: GetAssetIdCryptoUseCase
 ) : Worker(appContext, params) {
     override fun doWork(): Result {
-        PriceCheck()
+        priceCheck()
         return Result.success()
     }
-    fun PriceCheck(){
-        lateinit var auth: FirebaseAuth
-        auth = Firebase.auth
-        val authId = auth.currentUser!!.uid
+
+    fun priceCheck() {
+        val auth = Firebase.auth
+        val authId = auth.currentUser?.uid ?: return
         val notificationHandler = NotificationHandler(applicationContext)
         val favState = mutableStateOf<FavState>(FavState())
 
-        getFavUseCase.executeGetFav(authId).onEach {
-            when (it) {
+        getFavUseCase.executeGetFav(authId).onEach { resource ->
+            when (resource) {
                 is Resource.Success -> {
-                    favState.value = FavState(cryptos = it.data ?: emptyList())
-                    it.data?.forEach {
-                        priceCheck2(it,notificationHandler)
+                    val cryptos = resource.data ?: emptyList()
+                    favState.value = FavState(cryptos = cryptos)
+                    cryptos.forEach { crypto ->
+                        checkCryptoPrice(crypto, notificationHandler)
                     }
                 }
                 is Resource.Loading -> {
                     favState.value = FavState(isLoading = true)
                 }
                 is Resource.Error -> {
-                    favState.value = FavState(error = it.message ?: "Error")
+                    favState.value = FavState(error = resource.message ?: "Error")
                 }
             }
         }.launchIn(CoroutineScope(Dispatchers.IO))
-
     }
 
-    fun priceCheck2(root : Root,notificationHandler : NotificationHandler){
-        getAssetIdCryptoUseCase.executeGetCrypto(root.asset_id!!).onEach {
-            when (it) {
+    fun checkCryptoPrice(root: Root, notificationHandler: NotificationHandler) {
+        val assetId = root.asset_id ?: return
+        getAssetIdCryptoUseCase.executeGetCrypto(assetId).onEach { resource ->
+            when (resource) {
                 is Resource.Success -> {
-                    val priceChangePercent =
-                        (it.data!![0].price_usd!! - root.price_usd!!) / root.price_usd!! * 100
-                    if (priceChangePercent > 2 || priceChangePercent < -2) {
-                        notificationHandler.showSimpleNotification(it.data[0].name!!.toString(), priceChangePercent.toString())
-                    }
+                    handleCryptoPrice(resource.data?.getOrNull(0), root, notificationHandler)
                 }
-                is Resource.Loading -> {}
-
-                is Resource.Error -> {}
+                is Resource.Loading -> {
+                }
+                is Resource.Error -> {
+                }
             }
         }.launchIn(CoroutineScope(Dispatchers.IO))
     }
+
+    fun handleCryptoPrice(cryptoData: Root?, root: Root, notificationHandler: NotificationHandler) {
+        cryptoData ?: return
+        val priceUsd = cryptoData.price_usd ?: return
+        val priceChangePercent = (priceUsd - root.price_usd!!) / root.price_usd!! * 100
+        if (priceChangePercent > 2 || priceChangePercent < -2) {
+            notificationHandler.showSimpleNotification(
+                cryptoData.name ?: "",
+                priceChangePercent.toString()
+            )
+        }
+    }
+
 
 }
 

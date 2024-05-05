@@ -6,5 +6,4 @@ data class FavState(
     val isLoading : Boolean = false,
     val cryptos : List<Root> = listOf(),
     val error : String = "",
-    val delete : Boolean = false
 )
