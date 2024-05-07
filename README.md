@@ -1,9 +1,9 @@
 # Cryptocurrency Price Tracker App
-Real-time Prices: Get up-to-date cryptocurrency prices.
-User Registration: Sign up effortlessly to unlock personalized features.
-User-friendly: Easy navigation and a clean interface.
-Customized: Add your favorite coins to your watchlist.
-Notifications: Receive alerts for price changes.
+- Real-time Prices: Get up-to-date cryptocurrency prices.
+- User Registration: Sign up effortlessly to unlock personalized features.
+- User-friendly: Easy navigation and a clean interface.
+- Customized: Add your favorite coins to your watchlist.
+- Notifications: Receive alerts for price changes.
 ## Features 
 
 - Kotlin 
