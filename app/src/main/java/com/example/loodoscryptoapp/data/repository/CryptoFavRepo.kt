@@ -11,12 +11,14 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 class CryptoFavRepo {
-    suspend fun saveFav(authId: String, asset_id: String, id_icon: String, name: String, price_usd: String) =
+    suspend fun saveFav(authId: String, asset_id: String, id_icon: String, name: String, price_usd: String?) =
         withContext(Dispatchers.IO) {
-            val fav = Root(asset_id,id_icon,name,price_usd.toDouble())
+            val price = price_usd?.toDoubleOrNull() ?: 0.0
+            val fav = Root(asset_id, id_icon, name, price)
             Firebase.firestore.collection("Users").document(authId)
                 .collection("FavoriteAssets").add(fav)
         }
+
     suspend fun getFavList(authId: String): List<Root> = suspendCoroutine { continuation ->
         val list = ArrayList<Root>()
         Firebase.firestore.collection("Users").document(authId)
