@@ -61,7 +61,6 @@ fun SignUpScreen(viewModel:SignUpViewModel= hiltViewModel(),navController:NavCon
                     email = newTf
                 }
             )
-            Spacer(modifier = Modifier.height(12.dp))
 
             PasswordTextField(
                 password = password,
@@ -74,7 +73,6 @@ fun SignUpScreen(viewModel:SignUpViewModel= hiltViewModel(),navController:NavCon
                 }
             )
         }
-        Spacer(modifier = Modifier.height(12.dp))
         SignButton(onClick = {
             viewModel.loadSignUp(email, password, context)
         },"Sign Up")

@@ -52,7 +52,6 @@ fun SignInScreen(viewModel: SignInViewModel = hiltViewModel(),navController: Nav
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Logo()
-        Spacer(modifier = Modifier.height(20.dp))
         Column {
             EmailTextField(
                 tf = email,
@@ -60,7 +59,6 @@ fun SignInScreen(viewModel: SignInViewModel = hiltViewModel(),navController: Nav
                     email = newTf
                 }
             )
-            Spacer(modifier = Modifier.height(12.dp))
             PasswordTextField(
                 password = password,
                 onPasswordChange = { newPassword ->
@@ -72,7 +70,6 @@ fun SignInScreen(viewModel: SignInViewModel = hiltViewModel(),navController: Nav
                 }
             )
         }
-        Spacer(modifier = Modifier.height(12.dp))
         SignButton(
             onClick = {
                 viewModel.loadSignIn(email, password, context)
