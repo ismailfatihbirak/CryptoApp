@@ -21,7 +21,7 @@ The app uses the [CoinAPI.io](https://www.coinapi.io/)
 ## Screenshoots
 | Welcome | Sign Up | Sign In |
 | ------ | ---- | ------ |
-|<img src="https://i.imgur.com/HK5yTen.png" width="250" height="500"/>|<img src="https://i.imgur.com/ClFuNfe.png" width="250" height="500"/>|<img src="https://i.imgur.com/IdiBqq7.png" width="250" height="500"/>|
+|<img src="https://i.imgur.com/kfXfEL7.png" width="250" height="500"/>|<img src="https://i.imgur.com/f3tWGw6.png" width="250" height="500"/>|<img src="https://i.imgur.com/V1NBuQ4.png" width="250" height="500"/>|
 
 </br>
 
