@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.loodoscryptoapp.R
+import com.example.loodoscryptoapp.presentation.components.Logo
 
 @Composable
 fun WelcomeScreen(navController: NavController) {
@@ -29,16 +30,7 @@ fun WelcomeScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()) {
         Column {
-            Image(
-                painter = painterResource(id = R.drawable.loodos_icon),
-                contentDescription = "" ,
-                modifier = Modifier.size(150.dp,100.dp))
-            Text(text = "Crypto", fontSize = 40.sp,
-                fontFamily = FontFamily.Monospace,
-                fontWeight = FontWeight.Bold,
-                color = colorResource(
-                id = R.color.welcome_color,
-            ))
+            Logo()
         }
 
         TextButton(

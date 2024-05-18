@@ -18,15 +18,8 @@ import com.example.loodoscryptoapp.R
 fun Logo() {
     Column {
         Image(
-            painter = painterResource(id = R.drawable.loodos_icon),
-            contentDescription = "" ,
-            modifier = Modifier.size(150.dp,100.dp))
-        Text(text = "Crypto", fontSize = 40.sp,
-            fontFamily = FontFamily.Monospace,
-            fontWeight = FontWeight.Bold,
-            color = colorResource(
-                id = R.color.welcome_color,
-            )
-        )
+            painter = painterResource(id = R.drawable.logo),
+            contentDescription = "",
+            modifier = Modifier.size(300.dp))
     }
 }
